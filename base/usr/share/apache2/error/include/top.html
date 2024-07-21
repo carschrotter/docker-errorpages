@@ -1,0 +1,151 @@
+<!--#if expr="-z v('CONTENT_LANGUAGE')"
+--><!--#set var="CONTENT_LANGUAGE" value="en"
+--><!--#endif
+--><!--#if expr="v('REDIRECT_OVERRIDE_STATUS') != '' && v('REDIRECT_STATUS') = '200'"
+--><!--#set var="REDIRECT_STATUS" value="${REDIRECT_OVERRIDE_STATUS}"
+--><!--#else
+--><!--#if expr="-z v('REDIRECT_STATUS')"
+--><!--#set var="REDIRECT_STATUS" value="404"
+--><!--#endif
+--><!--#endif
+--><!DOCTYPE html>
+<html lang="<!--#echo var="CONTENT_LANGUAGE" -->">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title><!--#echo encoding="none" var="TITLE" --></title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
+
+    <link rev="made" href="mailto:<!--#echo encoding="url" var="SERVER_ADMIN" -->" />
+
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #0082C9;
+            color: #fff;
+            font-family: 'Cabin', sans-serif;
+        }
+    
+        #errorcode {
+            
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+    
+
+        .errorcode {
+            max-width: 80%;
+            line-height: 1.4;
+            text-align: center;
+        }
+    /*
+        .errorcode .errorcode-number {
+            position: relative;
+            height: 240px;
+        }
+        */
+    
+        .errorcode .errorcode-number h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 252px;
+            font-weight: 900;
+            margin: 0px;
+            color: #262626;
+            text-transform: uppercase;
+            letter-spacing: -40px;
+            text-shadow: -8px 0px 0px #fff;
+            line-height: calc((252px /3 *2) + 1rem);
+        }
+
+        .errorcode .errorcode-number h3 {
+
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #262626;
+            margin: 0px;
+            letter-spacing: 3px;
+            padding-left: 6px;
+        }
+    
+        .errorcode h1 {
+            font-family: 'Cabin', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #FFF;
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+        pre {
+            white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            white-space: pre-wrap;
+            word-wrap: break-word; 
+        }
+        .whoami {
+            width:80%;
+            margin:1em auto;
+            overflow:hidden
+        }
+
+        th, td {
+            text-align: left;
+        }
+    
+        @media only screen and (max-width: 767px) {
+            .errorcode .errorcode-number {
+                height: 200px;
+            }
+    
+            .errorcode .errorcode-number h2 {
+                font-size: 200px;
+            }
+        }
+    
+        @media only screen and (max-width: 480px) {
+            .errorcode .errorcode-number {
+                height: 162px;
+            }
+    
+            .errorcode .errorcode-number h2 {
+                font-size: 162px;
+                height: 150px;
+                line-height: 162px;
+            }
+    
+            .errorcode h1 {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <!--[if lt IE 9]>
+    		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    		<![endif]-->
+    
+    </head>
+    
+    <body>
+        <div id="errorcode">
+            <div class="errorcode">
+                <div class="errorcode-number">
+                    <h1><!--#echo encoding="none" var="TITLE" --></h1>
+                    <h2>Error</h2>
+                    <h2><!--#echo encoding="none" var="REDIRECT_STATUS" --></h2>
+                    <p>

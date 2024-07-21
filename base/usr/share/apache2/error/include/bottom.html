@@ -1,0 +1,43 @@
+            </p>
+            <p>
+                <!--#include virtual="../contact.html.var" -->
+            </p>
+            <address>
+            <a href="/"><!--#echo var="SERVER_NAME" --></a><br />
+            <span><!--#echo var="SERVER_SOFTWARE" --></span>
+            </address>
+            </div>
+        </div>
+    </div>
+    <div class="whoami">
+        <h3>whoami:</h3>
+        <?php
+        if(getenv('ENABLE_WHOAMI') == 'true'):
+        ?>
+        <table border="0" align="left">
+            <tbody>
+                <tr>
+                    <td colspan="2"><?= $_GET['x-real-url'] ?? $_SERVER['REQUEST_URI'] ?? '/' ?> <?= $_SERVER['SERVER_PROTOCOL'] ?? 'HTTP/1.1' ?></td>
+                </tr>
+            <?php foreach(getallheaders() as $env_name => $env_value) : ?>
+                <tr>
+                    <th><?=$env_name?></th>
+                    <td><?= htmlentities($env_value) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php
+        endif;
+        ?>
+    </div>
+    <div class="whoami debug_env">
+        <?php
+        if(getenv('DEBUG_ENV') == 'true'):
+        ?>
+        <pre><?=shell_exec('printenv')?>;</pre>
+        <?php
+        endif;
+        ?>
+    </div>
+</body>
